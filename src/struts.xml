@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+    <package name="default" namespace="/" extends="struts-default,json-default">
+		<action name="studentlogin" class="studentAction" method="studentlogin">
+			<result name="error">/jsp/error.jsp</result>
+			<result name="input" type="redirect">/</result>
+		</action>
+		<action name="addStudent" class="studentAction" method="addStudent">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+		<action name="deleteStudent" class="studentAction" method="deleteStudent">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+		<action name="updateStudent" class="studentAction" method="updateStudent">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+		<action name="managerlogin" class="managerAction" method="managerlogin">
+			<result name="error">/jsp/error.jsp</result>
+			<result name="input" type="redirect">/jsp/manager.jsp</result>
+		</action>
+		<action name="addCourse" class="courseAction" method="addCourse">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="input">/jsp/success.jsp</result>
+		</action>
+		<action name="deleteCourse" class="courseAction" method="deleteCourse">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+		<action name="updateCourse" class="courseAction" method="updateCourse">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/jsp/success.jsp</result>
+		</action>
+		<action name="queryCourse" class="courseAction" method="queryCourse">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="query">/jsp/querycou.jsp</result>
+		</action>
+		<action name="selectCourse" class="studentAction" method="selectCourse">
+			<result name="fail">/jsp/fail.jsp</result>
+			<result name="success">/</result>
+		</action>
+		<action name="ajaxInfo1" class="courseAction" method="ajaxInfo1">
+			<result name="ajax" type="json">
+             <param name="root">info1</param>
+            </result>
+		</action>
+		<action name="ajaxInfo2" class="courseAction" method="ajaxInfo2">
+			<result name="ajax" type="json">
+             <param name="root">info2</param>
+            </result>
+		</action>
+	</package>
+
+</struts>

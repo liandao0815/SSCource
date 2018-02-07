@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-12-25 13:55:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="sscource.entity.Course" table="COURSE">
+        <id name="cid" type="java.lang.String">
+            <column name="CID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="credit" type="float">
+            <column name="CREDIT" />
+        </property>
+        <property name="teacher" type="java.lang.String">
+            <column name="TEACHER" />
+        </property>
+        <property name="couCount" type="int">
+            <column name="COUCOUNT" />
+        </property>
+        <property name="stuCount" type="int">
+            <column name="STUCOUNT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+     
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ssc"/>
+		<property name="user" value="root"/>
+		<property name="password" value="123456"/>
+		<property name="maxPoolSize" value="5"/>
+		<property name="minPoolSize" value="2"/>
+		<property name="initialPoolSize" value="2"/>
+		<property name="maxIdleTime" value="1000"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>sscource/entity/Student.hbm.xml</value>
+				<value>sscource/entity/Manager.hbm.xml</value>
+				<value>sscource/entity/Course.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+			</props>
+		</property>
+	</bean>
+     
+    <bean id="studentDao" class="sscource.dao.impl.StudentDAOImpl">
+		<constructor-arg>
+			<ref bean="sessionFactory"/>
+		</constructor-arg>
+	</bean>
+	<bean id="managerDao" class="sscource.dao.impl.ManagerDAOImpl">
+		<constructor-arg>
+			<ref bean="sessionFactory"/>
+		</constructor-arg>
+	</bean>
+	<bean id="courseDao" class="sscource.dao.impl.CourseDAOImpl">
+		<constructor-arg>
+			<ref bean="sessionFactory"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="studentService" class="sscource.service.impl.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	<bean id="managerService" class="sscource.service.impl.ManagerServiceImpl">
+		<property name="managerDao" ref="managerDao"></property>
+	</bean>
+	<bean id="courseService" class="sscource.service.impl.CourseServiceImpl">
+		<property name="courseDao" ref="courseDao"></property>
+	</bean>
+	
+	<bean id="studentAction" class="sscource.action.StudentAction" scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="managerAction" class="sscource.action.ManagerAction" scope="prototype">
+		<property name="managerService" ref="managerService"></property>
+	</bean>
+	<bean id="courseAction" class="sscource.action.CourseAction" scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+
+</beans>

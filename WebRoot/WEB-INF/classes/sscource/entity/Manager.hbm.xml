@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-12-24 12:36:17 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="sscource.entity.Manager" table="MANAGER" lazy="false">
+        <id name="mname" type="java.lang.String">
+            <column name="MNAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="mpassword" type="java.lang.String">
+            <column name="MPASSWORD" />
+        </property>
+    </class>
+</hibernate-mapping>
