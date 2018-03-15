@@ -1,3 +1,3 @@
 # SSCource
-## javaaweb--学生选课系统
+## javaweb--学生选课系统
 > ssh框架实现学生选课系统
