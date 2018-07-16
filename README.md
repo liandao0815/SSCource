@@ -12,9 +12,15 @@
 3. 信息统计：课程选课人数统计、开设课程类别统计
 ### 开发环境
 **操作系统**：Windows 10
+
 **IDE工具**：Eclipse
+
 **JDK**：JDK1.8
+
 **中间件**：Tomcat
+
 **数据库**：MySQL5.7
+
 **后端框架**：Struts2、Spring4、Hibernate5
+
 **前端框架或库**：Jquery、Bootstrap
